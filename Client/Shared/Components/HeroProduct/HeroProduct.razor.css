@@ -1,0 +1,48 @@
+﻿.hero-product {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    position: relative;
+    text-align: center;
+}
+
+.hero-product__img {
+    height: 100%;
+    margin: 0 auto;
+}
+
+.hero-product__text-container,
+.hero-product__price {
+    position: absolute;
+    border-radius: 1rem;
+    background-color: rgba(151, 153, 219, 0.4);
+    bottom: 5%;
+    padding: 2rem;
+    color: white;
+}
+
+.hero-product__text-container {
+    left: 5%;
+}
+
+.hero-product__heading {
+    font-size: 2rem;
+    position: relative;
+}
+
+.hero-product__heading::after {
+    content: "";
+    height: 0.2rem;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+    border-radius: 0.2rem;
+}
+
+.hero-product__price {
+    font-size: 3rem;
+    right: 5%;
+}
