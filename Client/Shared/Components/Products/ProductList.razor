@@ -1,0 +1,17 @@
+﻿@inject IProductService ProductService
+@inject HttpClient http
+
+<section class="product-list container">
+    <h2>All Products</h2>
+    @if (Products is null)
+    {
+        <p>Loading products...</p>
+    }
+    else
+    {
+            @foreach (var product in Products)
+            {
+                <ProductListing Name="@product.Name" Description="@product.Description" Price="@product.Price.ToString()"/>
+            }
+    }
+</section>

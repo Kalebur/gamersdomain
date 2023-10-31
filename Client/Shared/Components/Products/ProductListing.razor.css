@@ -1,0 +1,25 @@
+﻿.product-listing {
+    display: flex;
+}
+
+.product-listing:not(:last-of-type) {
+    margin-bottom: 2rem;
+}
+
+.product-img {
+    height: 200px;
+    width: 200px;
+}
+
+.product-info {
+    margin-left: 1rem;
+}
+
+.product-name {
+    font-weight: 600;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
