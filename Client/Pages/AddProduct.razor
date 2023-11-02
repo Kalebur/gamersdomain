@@ -1,0 +1,43 @@
+﻿@using System.Text.Json;
+@page "/addproduct"
+@inject IProductService ProductService
+
+<h3>Add New Product</h3>
+
+<EditForm Model="Product" OnValidSubmit="@Submit">
+    <label>
+        Product Name
+        <InputText @bind-Value="Product.Name" class="form-control" required/>
+    </label>
+    <label>
+        Product Description
+        <InputText @bind-Value="Product.Description" class="form-control" required/>
+    </label>
+    <label>
+        Product Category
+        <InputSelect @bind-Value="Product.Category" class="form-select">
+            <option value="Computers" selected>Computers</option>
+            <option value="Keyboards">Keyboards</option>
+            <option value="Mice">Mice</option>
+            <option value="Headsets">Headsets</option>
+        </InputSelect>
+    </label>
+    <label>
+        Product Price
+        <InputNumber @bind-Value="Product.Price" class="form-control" required />
+    </label>
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+    
+</EditForm>
+
+@code {
+    public Product Product { get; set; } = new();
+
+    private async void Submit()
+    {
+        await ProductService.AddProduct(Product);
+        Product = new();
+        StateHasChanged();
+    }
+}

@@ -11,6 +11,13 @@ namespace gamersdomain.Client.Services.ProductService
         {
             _http = http;
         }
+
+        public async Task<string> AddProduct(Product product)
+        {
+            var result = await _http.PostAsJsonAsync("api/product", product);
+            return result.ToString();
+        }
+
         public async Task<List<Product>> GetAllProducts()
         {
             var result = await _http.GetFromJsonAsync<List<Product>>("api/product");
