@@ -22,5 +22,13 @@ namespace gamersdomain.Server.Services.ProductService
         {
             return await _dataContext.Products.ToListAsync();
         }
+
+        public async Task<List<Product>> GetProductsByCategory(string categoryName)
+        {
+            var response = await _dataContext.Products
+                .Where(p => p.Category!.Name.ToLower() == categoryName.ToLower())
+                .ToListAsync();
+            return response;
+        }
     }
 }

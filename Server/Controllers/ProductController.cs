@@ -28,5 +28,12 @@ namespace gamersdomain.Server.Controllers
             await _productService.AddProduct(product);
             return Ok("Product added!");
         }
+
+        [HttpGet("category/{categoryName}")]
+        public async Task<ActionResult<List<Product>>> GetProductsByCategory(string categoryName)
+        {
+            var result = await _productService.GetProductsByCategory(categoryName);
+            return Ok(result);
+        }
     }
 }

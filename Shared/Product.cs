@@ -12,9 +12,11 @@ namespace gamersdomain.Shared
         public int ProductId { get; set; }
         public string Name { get; set; } = string.Empty;
         public string? Description { get; set; }
-        public string? Category { get; set; }
-        //public string? ImageUrl { get; set; }
+        public Category? Category { get; set; }
+        public int CategoryId { get; set; }
+        public string? ImageUrl { get; set; }
         [Column(TypeName ="decimal(18, 2)")]
         public decimal Price { get; set; }
+        public bool IsFeaturedProduct { get; set; } = false;
     }
 }

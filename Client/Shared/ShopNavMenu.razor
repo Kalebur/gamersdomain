@@ -1,0 +1,12 @@
+﻿@inject ICategoryService CategoryService
+
+<nav class="shop-nav">
+    <ul class="nav">
+        @foreach (var category in Categories)
+        {
+            <li>
+                <a class="shop-nav-link" href="@category.Url">@category.Name</a>
+            </li>
+        }
+    </ul>
+</nav>

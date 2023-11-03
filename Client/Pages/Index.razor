@@ -1,10 +1,19 @@
 ﻿@page "/"
+@page "/{CategoryName}"
 
 <PageTitle>Gamers Domain</PageTitle>
-<HeroProduct
-    ProductName="Delta-3 Gaming PC"
-    Description="Glorious gaming PC for the ages! GLORIOUS, I say!!" 
-    ImageUrl="/images/computers/comp4.png"
-    Price="1599"
-/>
-<ProductList />
+<ShopNavMenu />
+@if (CategoryName == null)
+{
+    <HeroProduct
+        ProductName="Delta-3 Gaming PC"
+        Description="Glorious gaming PC for the ages! GLORIOUS, I say!!" 
+        ImageUrl="/images/computers/comp4.png"
+        Price="1599"
+    />
+    <ProductList />
+}
+else
+{
+    
+}
