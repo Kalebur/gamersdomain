@@ -1,6 +1,8 @@
 ﻿@page "/"
 @page "/{CategoryName}"
 
+@inject IProductService ProductService
+
 <PageTitle>Gamers Domain</PageTitle>
 <ShopNavMenu />
 @if (CategoryName == null)
@@ -15,5 +17,7 @@
 }
 else
 {
-    
+    <h3>@CategoryName.ToUpper()</h3>
+    @UpdateProductListing()
+    <ProductList Products="Products" />
 }

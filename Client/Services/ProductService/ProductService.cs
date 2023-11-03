@@ -23,5 +23,11 @@ namespace gamersdomain.Client.Services.ProductService
             var result = await _http.GetFromJsonAsync<List<Product>>("api/product");
             return result ?? new List<Product>();
         }
+
+        public async Task<List<Product>> GetProductsByCategory(string category)
+        {
+            var result = await _http.GetFromJsonAsync<List<Product>>($"api/product/category/{category}");
+            return result ?? new List<Product>();
+        }
     }
 }
