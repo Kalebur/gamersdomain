@@ -1,5 +1,5 @@
 ﻿.hero-product {
-    height: 100vh;
+    height: calc(100vh - 4.5rem);
     width: 100vw;
     background-color: black;
     position: relative;

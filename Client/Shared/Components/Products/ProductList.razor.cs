@@ -8,9 +8,9 @@ namespace gamersdomain.Client.Shared.Components.Products
         [Parameter]
         public List<Product>? Products { get; set; } = null;
 
-        //protected override async Task OnInitializedAsync()
-        //{
-        //    Products = await ProductService.GetAllProducts();
-        //}
+        protected override async Task OnInitializedAsync()
+        {
+            Products = await ProductService.GetAllProducts();
+        }
     }
 }
