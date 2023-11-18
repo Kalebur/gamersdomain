@@ -17,7 +17,6 @@
 }
 else
 {
-    <h3>@CategoryName.ToUpper()</h3>
     @UpdateProductListing()
-    <ProductList Products="Products" />
+    <ProductList Products="Products" ProductCategory="@CategoryName.ToUpper()"/>
 }
