@@ -1,0 +1,28 @@
+﻿@page "/product/{ProductId:int}"
+@inject IProductService ProductService
+
+<div class="container">
+    <h2>Product Details for @ProductId</h2>
+    @if (Product is null)
+    {
+        <p>Loading product info...</p>
+    }
+    else
+    {
+        <h3>@Product.Name</h3>
+        <h4>@Product.Price</h4>
+    }
+</div>
+
+@code {
+    public Product? Product { get; set; } = null;
+
+    [Parameter]
+    public int ProductId { get; set; }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var result = await ProductService.GetProductById(ProductId);
+        Product = result;
+    }
+}

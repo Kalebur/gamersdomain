@@ -23,6 +23,14 @@ namespace gamersdomain.Server.Services.ProductService
             return await _dataContext.Products.ToListAsync();
         }
 
+        public async Task<Product> GetProductById(int id)
+        {
+            var response = await _dataContext.Products
+                .Where(p => p.ProductId == id)
+                .ToListAsync();
+            return response.First();
+        }
+
         public async Task<List<Product>> GetProductsByCategory(string categoryName)
         {
             var response = await _dataContext.Products

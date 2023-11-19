@@ -12,10 +12,11 @@
         @foreach (var product in Products)
         {
             <ProductListing 
-            Name="@product.Name" 
-            Description="@product.Description" 
-            Price="@product.Price.ToString()" 
-            ImageUrl="@product.ImageUrl"
+                Product="@product"
+                Name="@product.Name" 
+                Description="@product.Description" 
+                Price="@product.Price.ToString()" 
+                ImageUrl="@product.ImageUrl"
             />
         }
     }

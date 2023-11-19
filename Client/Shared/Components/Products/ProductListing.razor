@@ -1,8 +1,10 @@
-﻿<div class="product-listing">
-    <img src="@ImageUrl" class="product-img" alt="@Name" />
-    <div class="product-info">
-        <h3 class="product-name">@Name</h3>
-        <p class="product-description">@Description</p>
-        <p class="product-price">$@Price</p>
+﻿<a href="/product/@Product.ProductId">
+    <div class="product-listing">
+        <img src="@ImageUrl" class="product-img" alt="@Name" />
+        <div class="product-info">
+            <h3 class="product-name">@Name</h3>
+            <p class="product-description">@Description</p>
+            <p class="product-price">$@Price</p>
+        </div>
     </div>
-</div>
+</a>
