@@ -33,7 +33,13 @@ namespace gamersdomain.Server.Controllers
         public async Task<ActionResult<List<Product>>> GetProductsByCategory(string categoryName)
         {
             var result = await _productService.GetProductsByCategory(categoryName);
-            return Ok(result);
+            if (result is null)
+            {
+                return Ok(new List<Product>());
+            } else
+            {
+                return Ok(result);
+            }
         }
 
         [HttpGet("{productId}")]

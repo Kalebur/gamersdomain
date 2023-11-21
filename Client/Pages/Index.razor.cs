@@ -14,5 +14,11 @@ namespace gamersdomain.Client.Pages
             Products = result;
             StateHasChanged();
         }
+
+        protected override async Task OnParametersSetAsync()
+        {
+            var result = await ProductService.GetProductsByCategory(CategoryName!);
+            Products = result;
+        }
     }
 }

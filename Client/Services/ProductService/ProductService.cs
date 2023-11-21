@@ -30,10 +30,14 @@ namespace gamersdomain.Client.Services.ProductService
             return result!;
         }
 
-        public async Task<List<Product>> GetProductsByCategory(string category)
+        public async Task<List<Product>> GetProductsByCategory(string? category)
         {
+            if (category is null)
+            {
+                return new List<Product>();
+            }
             var result = await _http.GetFromJsonAsync<List<Product>>($"api/product/category/{category}");
-            return result ?? new List<Product>();
+            return result;
         }
     }
 }

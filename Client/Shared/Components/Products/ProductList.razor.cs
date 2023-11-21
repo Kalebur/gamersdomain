@@ -10,12 +10,24 @@ namespace gamersdomain.Client.Shared.Components.Products
         [Parameter]
         public string? ProductCategory { get; set; }
 
-        protected override async Task OnInitializedAsync()
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    if (ProductCategory is null)
+        //    {
+        //        ProductCategory = "All Products";
+        //        Products = await ProductService.GetAllProducts();
+        //    }
+        //}
+
+        protected override async Task OnParametersSetAsync()
         {
-            Products = await ProductService.GetAllProducts();
             if (ProductCategory is null)
             {
                 ProductCategory = "All Products";
+                Products = await ProductService.GetAllProducts();
+            } else
+            {
+                Products = await ProductService.GetProductsByCategory(ProductCategory);
             }
         }
     }

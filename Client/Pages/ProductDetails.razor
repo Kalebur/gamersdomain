@@ -2,15 +2,16 @@
 @inject IProductService ProductService
 
 <div class="container">
-    <h2>Product Details for @ProductId</h2>
     @if (Product is null)
     {
         <p>Loading product info...</p>
     }
     else
     {
+        <img src="@Product.ImageUrl" />
         <h3>@Product.Name</h3>
-        <h4>@Product.Price</h4>
+        <p>@Product.Description</p>
+        <h4>$@Product.Price</h4>
     }
 </div>
 

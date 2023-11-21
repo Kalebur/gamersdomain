@@ -4,7 +4,6 @@
 @inject IProductService ProductService
 
 <PageTitle>Gamers Domain</PageTitle>
-<ShopNavMenu />
 @if (CategoryName == null)
 {
     <HeroProduct
@@ -17,6 +16,5 @@
 }
 else
 {
-    @UpdateProductListing()
     <ProductList Products="Products" ProductCategory="@CategoryName.ToUpper()"/>
 }
