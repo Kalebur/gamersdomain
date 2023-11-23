@@ -1,4 +1,5 @@
 global using gamersdomain.Shared;
+global using Blazored.LocalStorage;
 using gamersdomain.Client;
 using gamersdomain.Client.Services.CategoryService;
 using gamersdomain.Client.Services.ProductService;
@@ -12,5 +13,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddBlazoredLocalStorage();
 
 await builder.Build().RunAsync();
