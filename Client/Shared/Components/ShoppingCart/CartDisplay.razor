@@ -1,5 +1,10 @@
-﻿<h3>CartDisplay</h3>
+﻿@inject ILocalStorageService localStorage
 
-@code {
-
-}
+<div class="cart-display-wrapper">
+    <a href="/cart">
+        <i class="oi oi-cart"></i>
+        @if (Items.Count > 0) {
+            <p class="cart-item-count">@Items.Count</p>
+        }
+    </a>
+</div>

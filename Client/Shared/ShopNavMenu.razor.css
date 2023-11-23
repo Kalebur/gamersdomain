@@ -8,7 +8,7 @@
 
 .shop-nav .nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .shop-nav-link {

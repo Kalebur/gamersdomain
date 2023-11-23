@@ -1,0 +1,21 @@
+﻿.cart-display-wrapper {
+    position: relative;
+    font-size: 2rem;
+}
+
+.cart-display-wrapper a {
+    position: absolute;
+    top: -0.5rem;
+}
+
+.cart-item-count {
+    padding: 5px 10px;
+    color: white;
+    background-color: rgb(151, 153, 219);
+    border-radius: 50%;
+    position: absolute;
+    right: -3rem;
+    top: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+}

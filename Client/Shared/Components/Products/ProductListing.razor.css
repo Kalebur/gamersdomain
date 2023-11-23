@@ -1,5 +1,14 @@
 ﻿.product-listing {
     display: flex;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.product-listing:hover {
+    background-color: rgba(151, 153, 219, 0.4);
 }
 
 .product-listing:not(:last-of-type) {
