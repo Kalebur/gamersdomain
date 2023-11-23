@@ -4,9 +4,11 @@
     {
         private readonly ILocalStorageService _localStorageService;
 
-        public Task AddItemToCart(CartItem item)
+        public async Task AddItemToCart(CartItem item)
         {
-            throw new NotImplementedException();
+            var cart = await GetCartItems();
+            cart.Add(item);
+            await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", cart);
         }
 
         public async Task<List<CartItem>> GetCartItems()
