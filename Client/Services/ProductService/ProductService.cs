@@ -37,7 +37,7 @@ namespace gamersdomain.Client.Services.ProductService
                 return new List<Product>();
             }
             var result = await _http.GetFromJsonAsync<List<Product>>($"api/product/category/{category}");
-            return result;
+            return result!;
         }
     }
 }

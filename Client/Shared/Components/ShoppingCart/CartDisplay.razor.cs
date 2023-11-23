@@ -10,16 +10,7 @@ namespace gamersdomain.Client.Shared.Components.ShoppingCart
 
         protected override async Task OnInitializedAsync()
         {
-            bool cartExists = await localStorage.ContainKeyAsync("gd-cart");
-            if (!cartExists)
-            {
-                await localStorage.SetItemAsync<List<CartItem>>("gd-cart", Items);
-            }
-            else
-            {
-                List<CartItem> itemsFromCart = await localStorage.GetItemAsync<List<CartItem>>("gd-cart");
-                Console.WriteLine($"Item Count: {itemsFromCart.Count}");
-            }
+            Items = await CartService.InitializeCart();
         }
     }
 }
