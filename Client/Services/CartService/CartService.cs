@@ -9,6 +9,7 @@
             var cart = await GetCartItems();
             cart.Add(item);
             await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", cart);
+            await Console.Out.WriteLineAsync(cart.Count.ToString());
         }
 
         public async Task<List<CartItem>> GetCartItems()
