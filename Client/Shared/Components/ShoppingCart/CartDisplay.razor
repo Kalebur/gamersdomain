@@ -3,8 +3,8 @@
 <div class="cart-display-wrapper">
     <a href="/cart">
         <i class="oi oi-cart"></i>
-        @if (Items.Count > 0) {
-            <p class="cart-item-count">@Items.Count</p>
+        @if (CartService.Items.Count > 0) {
+            <p class="cart-item-count">@CartService.Items.Count</p>
         }
     </a>
 </div>

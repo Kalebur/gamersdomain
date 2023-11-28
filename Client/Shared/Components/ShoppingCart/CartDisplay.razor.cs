@@ -2,15 +2,25 @@
 
 namespace gamersdomain.Client.Shared.Components.ShoppingCart
 {
-    public partial class CartDisplay
+    public partial class CartDisplay : IDisposable
     {
         public int TotalItems { get; set; }
         public decimal TotalPrice { get; set; }
-        public List<CartItem> Items { get; set; } = new();
 
         protected override async Task OnInitializedAsync()
         {
-            Items = await CartService.InitializeCart();
+            await CartService.InitializeCart();
+        }
+
+        protected override void OnInitialized()
+        {
+            CartService.OnChange += StateHasChanged;
+        }
+
+        public void Dispose()
+        {
+            CartService.OnChange -= StateHasChanged;
+            GC.SuppressFinalize(this);
         }
     }
 }

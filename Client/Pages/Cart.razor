@@ -5,9 +5,13 @@
 <section class="container">
     <h1>Your Cart</h1>
 
-    @if (CartItems.Count == 0)
+    @if (CartItems is null)
     {
-        <p>Loading your cart...</p>
+        <p>Setting up new cart...</p>
+    }
+    else if (CartItems.Count == 0)
+    {
+        <p>Your cart is empty.</p>
     }
     else
     {

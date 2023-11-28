@@ -3,13 +3,22 @@
     public class CartService : ICartService
     {
         private readonly ILocalStorageService _localStorageService;
+        private List<CartItem> _items = new();
+
+        public List<CartItem> Items
+        {
+            get { return _items; }
+            set { _items = value; }
+        }
+
+
+        public event Action? OnChange;
 
         public async Task AddItemToCart(CartItem item)
         {
-            var cart = await GetCartItems();
-            cart.Add(item);
-            await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", cart);
-            await Console.Out.WriteLineAsync(cart.Count.ToString());
+            Items.Add(item);
+            await SaveLocalCart();
+            OnChange!.Invoke();
         }
 
         public async Task<List<CartItem>> GetCartItems()
@@ -29,10 +38,12 @@
             bool itemInCart = await ItemExistsInCart(productId);
             if (itemInCart)
             {
-                var cart = await GetCartItems();
+                var cart = Items;
                 cart = cart.Where(item => item.ProductId != productId).ToList();
-                await SaveLocalCart(cart);
+                Items = cart;
+                await SaveLocalCart();
             }
+            OnChange!.Invoke();
         }
 
         public async Task<List<CartItem>> InitializeCart()
@@ -40,10 +51,11 @@
             bool cartExists = await CartExists();
             if (!cartExists)
             {
-                await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", new());
+                await SaveLocalCart();
             }
 
             var response = await GetCartItems();
+            Items = response;
             return response;
         }
 
@@ -64,19 +76,18 @@
             // Item can't be in the cart if there is no cart
             if (!cartExists) return false;
 
-            var cart = await GetCartItems();
-            if (cart.Any(p => p.ProductId == productId)) return true;
+            if (Items.Any(p => p.ProductId == productId)) return true;
             return false;
         }
 
         public async Task SaveLocalCart()
         {
-            await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", new());
+            await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", Items);
         }
 
-        public async Task SaveLocalCart(List<CartItem> cart)
-        {
-            await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", cart);
-        }
+        //public async Task SaveLocalCart(List<CartItem> cart)
+        //{
+        //    await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", cart);
+        //}
     }
 }

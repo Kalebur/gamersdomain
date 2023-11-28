@@ -2,7 +2,7 @@
 
 namespace gamersdomain.Client.Shared.Components.ShoppingCart
 {
-    public partial class AddToCartButton
+    public partial class AddToCartButton : IDisposable
     {
         [Parameter]
         public Product? Product { get; set; }
@@ -28,6 +28,17 @@ namespace gamersdomain.Client.Shared.Components.ShoppingCart
                 cartItem.TotalPrice = cartItem.Quantity * Product!.Price;
                 await CartService.AddItemToCart(cartItem);
             }
+        }
+
+        public void Dispose()
+        {
+            CartService.OnChange -= StateHasChanged;
+            GC.SuppressFinalize(this);
+        }
+
+        protected override void OnInitialized()
+        {
+            CartService.OnChange += StateHasChanged;
         }
 
     }
