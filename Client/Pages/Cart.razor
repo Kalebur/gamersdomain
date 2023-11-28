@@ -25,7 +25,12 @@
                             Quantity:
                             <InputNumber @bind-Value="@item.Quantity" min="1" />
                         </label>
-                        <button class="cart-item-btn-remove" aria-label="Remove @item.Product.Name From Cart"><i class="oi oi-x"></i></button>
+                        <button class="btn btn-danger cart-item-btn-remove"
+                            aria-label="Remove @item.Product.Name From Cart"
+                            @onclick="() => RemoveItem(item)"
+                        >
+                            <i class="oi oi-x"></i>
+                        </button>
                     </div>
                 </div>
                 }

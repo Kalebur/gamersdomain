@@ -36,9 +36,16 @@ namespace gamersdomain.Client.Pages
             }
         }
 
-        private string GetCurrencyFormattedString(decimal price)
+        private static string GetCurrencyFormattedString(decimal price)
         {
             return string.Format("{0:C}", price);
+        }
+
+        private async void RemoveItem(CartItem item)
+        {
+            await CartService.RemoveItemFromCart(item);
+            CartItems = await CartService.GetCartItems();
+            StateHasChanged();
         }
     }
 }
