@@ -1,5 +1,11 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
+:root {
+    --color-primary: rgba(151, 153, 219, 0.4);
+    --color-secondary: rgb(151, 153, 219);
+    --color-tertiary: orange;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }

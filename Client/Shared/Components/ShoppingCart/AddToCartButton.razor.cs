@@ -9,12 +9,25 @@ namespace gamersdomain.Client.Shared.Components.ShoppingCart
 
         public async Task AddToCart()
         {
-            CartItem cartItem = new();
-            cartItem.Product = Product!;
-            cartItem.Quantity = 1;
-            cartItem.ProductId = Product!.ProductId;
-            cartItem.TotalPrice = cartItem.Quantity * Product!.Price;
-            await CartService.AddItemToCart(cartItem);
+            var cart = await CartService.GetCartItems();
+            if (cart.Any(item => item.ProductId == Product!.ProductId))
+            {
+                var cartItem = cart.First(item => item.ProductId == Product!.ProductId);
+                cartItem.Quantity++;
+                await Console.Out.WriteLineAsync($"Product Quantity: {cartItem.Quantity}");
+                await LocalStorage.SetItemAsync<List<CartItem>>("gd-cart", cart);
+            }
+            else
+            {
+                CartItem cartItem = new()
+                {
+                    Product = Product!,
+                    Quantity = 1,
+                    ProductId = Product!.ProductId
+                };
+                cartItem.TotalPrice = cartItem.Quantity * Product!.Price;
+                await CartService.AddItemToCart(cartItem);
+            }
         }
 
     }

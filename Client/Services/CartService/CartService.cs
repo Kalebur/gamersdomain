@@ -18,9 +18,21 @@
             return result;
         }
 
-        public Task RemoveItemFromCart(CartItem item)
+        public async Task RemoveItemFromCart(CartItem item)
         {
-            throw new NotImplementedException();
+            await RemoveItemFromCart(item.ProductId);
+
+        }
+
+        public async Task RemoveItemFromCart(int productId)
+        {
+            bool itemInCart = await ItemExistsInCart(productId);
+            if (itemInCart)
+            {
+                var cart = await GetCartItems();
+                cart = cart.Where(item => item.ProductId != productId).ToList();
+                await SaveLocalCart(cart);
+            }
         }
 
         public async Task<List<CartItem>> InitializeCart()
@@ -44,6 +56,27 @@
         {
             bool response = await _localStorageService.ContainKeyAsync("gd-cart");
             return response;
+        }
+
+        private async Task<bool> ItemExistsInCart(int productId)
+        {
+            bool cartExists = await CartExists();
+            // Item can't be in the cart if there is no cart
+            if (!cartExists) return false;
+
+            var cart = await GetCartItems();
+            if (cart.Any(p => p.ProductId == productId)) return true;
+            return false;
+        }
+
+        public async Task SaveLocalCart()
+        {
+            await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", new());
+        }
+
+        public async Task SaveLocalCart(List<CartItem> cart)
+        {
+            await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", cart);
         }
     }
 }

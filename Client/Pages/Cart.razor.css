@@ -15,6 +15,11 @@
     width: 100%;
 }
 
+.cart-item-details {
+    position: relative;
+    width: 100%;
+}
+
 .cart-item-listing:nth-last-of-type(n+2) {
     border-bottom: 2px solid white;
     margin-bottom: 2rem;
@@ -22,7 +27,7 @@
 
 .cart-totals {
     flex-basis: 25%;
-    background-color: mediumaquamarine;
+    background-color: var(--color-secondary);
     font-weight: bold;
     font-size: 1.5rem;
 }
@@ -37,4 +42,9 @@
     font-weight: bold;
     font-size: 1.5rem;
     text-align: right;
+}
+
+.cart-item-quantity {
+    text-align: right;
+    font-size: 1.5rem;
 }

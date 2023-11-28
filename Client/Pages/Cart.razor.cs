@@ -20,5 +20,25 @@ namespace gamersdomain.Client.Pages
         {
             TotalPrice += price;
         }
+
+        private string GetTotalItemCostAsString(decimal price, int quantity)
+        {
+            CalculateTotalPrice();
+            return GetCurrencyFormattedString(price * quantity);
+        }
+
+        private void CalculateTotalPrice()
+        {
+            TotalPrice = 0;
+            foreach (var item in CartItems)
+            {
+                IncreaseTotalPrice(item.Product.Price * item.Quantity);
+            }
+        }
+
+        private string GetCurrencyFormattedString(decimal price)
+        {
+            return string.Format("{0:C}", price);
+        }
     }
 }

@@ -19,13 +19,19 @@
                     <img src="@item.Product.ImageUrl" alt="@item.Product.Name" class="cart-item-img"/>
                     <div class="cart-item-details">
                         <h2>@item.Product.Name</h2>
-                        <p class="cart-item-price">@item.Product.Price</p>
+                        <p class="cart-item-price">Price: @GetTotalItemCostAsString(item.Product.Price, item.Quantity)</p>
+                            <!-- <p class="cart-item-quantity">Quantity: @item.Quantity</p> -->
+                        <label for="quantity">
+                            Quantity:
+                            <InputNumber @bind-Value="@item.Quantity" min="1" />
+                        </label>
+                        <button class="cart-item-btn-remove" aria-label="Remove @item.Product.Name From Cart"><i class="oi oi-x"></i></button>
                     </div>
                 </div>
                 }
             </div>
             <div class="cart-totals">
-                <p><span class="cart-total-price">$@TotalPrice</span></p>
+                <p><span class="cart-total-price">Total Price: @GetCurrencyFormattedString(TotalPrice)</span></p>
             </div>
         </div>
 
