@@ -43,7 +43,7 @@ namespace gamersdomain.Server.Controllers
         }
 
         [HttpGet("{productId}")]
-        public async Task<ActionResult<Product>> GetProductById(int productId)
+        public async Task<ActionResult<ServiceResponse<Product>>> GetProductById(int productId)
         {
             var result = await _productService.GetProductById(productId);
             return Ok(result);

@@ -7,6 +7,6 @@ namespace gamersdomain.Server.Services.ProductService
         Task<List<Product>> GetAllProducts();
         Task<List<Product>> GetProductsByCategory(string categoryName);
         Task AddProduct(Product product);
-        Task<Product> GetProductById(int id);
+        Task<ServiceResponse<Product>> GetProductById(int id);
     }
 }

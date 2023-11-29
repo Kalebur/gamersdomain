@@ -23,12 +23,22 @@ namespace gamersdomain.Server.Services.ProductService
             return await _dataContext.Products.ToListAsync();
         }
 
-        public async Task<Product> GetProductById(int id)
+        public async Task<ServiceResponse<Product>> GetProductById(int id)
         {
-            var response = await _dataContext.Products
+            var response = new ServiceResponse<Product>();
+            var product = await _dataContext.Products
                 .FromSql($"SELECT * FROM Products WHERE ProductId={id}")
                 .ToListAsync();
-            return response.First();
+            if (product is null || product.Count == 0)
+            {
+                response.Success = false;
+                response.Message = $"No product matches ID: {id}";
+            }
+            else
+            {
+                response.Data = product.First();
+            }
+            return response;
         }
 
         public async Task<List<Product>> GetProductsByCategory(string categoryName)
