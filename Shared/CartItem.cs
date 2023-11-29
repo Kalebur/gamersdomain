@@ -7,7 +7,7 @@ namespace gamersdomain.Shared
         public int CartItemId { get; set; }
         public int ProductId { get; set; }
         public Product Product { get; set; } = new();
-        public int Quantity { get; set; }
+        public int Quantity { get; set; } = 1;
         public decimal TotalPrice { get; set; }
     }
 }

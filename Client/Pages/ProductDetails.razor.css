@@ -1,0 +1,10 @@
+﻿.product-info {
+    display: flex;
+    padding: 2rem;
+}
+
+.product-info img {
+    max-width: 500px;
+    border-radius: 2rem;
+    margin-right: 2rem;
+}

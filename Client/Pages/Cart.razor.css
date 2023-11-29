@@ -27,11 +27,12 @@
 
 .cart-totals {
     flex-basis: 25%;
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     font-weight: bold;
     font-size: 1.5rem;
     height: 25vh;
     border-bottom-left-radius: 2rem;
+    text-align: center;
 }
 
 .cart-item-img {

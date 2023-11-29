@@ -5,14 +5,20 @@
     @if (Product is null)
     {
         <p>Loading product info...</p>
+        <PageTitle>Gamers' Domain</PageTitle>
     }
     else
     {
-        <img src="@Product.ImageUrl" />
-        <h3>@Product.Name</h3>
-        <p>@Product.Description</p>
-        <h4>$@Product.Price</h4>
-        <AddToCartButton Product=@Product />
+        <PageTitle>Gamers' Domain | @Product.Name</PageTitle>
+        <div class="product-info">
+            <img src="@Product.ImageUrl" />
+            <div class="product-details">
+                <h3>@Product.Name</h3>
+                <p>@Product.Description</p>
+                <h4>@string.Format("{0:C}", Product.Price)</h4>
+                <AddToCartButton Product=@Product />
+            </div>
+        </div>
     }
 </div>
 

@@ -1,4 +1,4 @@
-﻿using gamersdomain.Client.Services.CartService;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace gamersdomain.Client.Pages
 {
@@ -46,6 +46,19 @@ namespace gamersdomain.Client.Pages
             await CartService.RemoveItemFromCart(item);
             CartItems = await CartService.GetCartItems();
             StateHasChanged();
+        }
+
+        private async Task UpdateLocalCart(ChangeEventArgs e)
+        {
+            Console.WriteLine(e.Value);
+            Console.WriteLine(CartItems.First().Quantity);
+            CartService.Items = CartItems;
+            await CartService.SaveLocalCart();
+        }
+
+        private void Test()
+        {
+            Console.WriteLine("WOOF!");
         }
     }
 }

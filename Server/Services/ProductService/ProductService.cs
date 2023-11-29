@@ -26,7 +26,7 @@ namespace gamersdomain.Server.Services.ProductService
         public async Task<Product> GetProductById(int id)
         {
             var response = await _dataContext.Products
-                .Where(p => p.ProductId == id)
+                .FromSql($"SELECT * FROM Products WHERE ProductId={id}")
                 .ToListAsync();
             return response.First();
         }

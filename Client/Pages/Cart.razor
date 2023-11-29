@@ -27,7 +27,7 @@
                             <!-- <p class="cart-item-quantity">Quantity: @item.Quantity</p> -->
                         <label for="quantity">
                             Quantity:
-                            <InputNumber @bind-Value="@item.Quantity" min="1" />
+                            <InputNumber @bind-Value="@item.Quantity" @oninput="UpdateLocalCart" min="1" />
                         </label>
                         <button class="btn btn-danger cart-item-btn-remove"
                             aria-label="Remove @item.Product.Name From Cart"

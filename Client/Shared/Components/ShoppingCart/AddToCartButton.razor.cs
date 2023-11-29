@@ -9,13 +9,12 @@ namespace gamersdomain.Client.Shared.Components.ShoppingCart
 
         public async Task AddToCart()
         {
-            var cart = await CartService.GetCartItems();
+            var cart = CartService.Items;
             if (cart.Any(item => item.ProductId == Product!.ProductId))
             {
                 var cartItem = cart.First(item => item.ProductId == Product!.ProductId);
                 cartItem.Quantity++;
-                await Console.Out.WriteLineAsync($"Product Quantity: {cartItem.Quantity}");
-                await LocalStorage.SetItemAsync<List<CartItem>>("gd-cart", cart);
+                await CartService.SaveLocalCart();
             }
             else
             {
