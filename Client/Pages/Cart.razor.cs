@@ -10,21 +10,12 @@ namespace gamersdomain.Client.Pages
         protected override async Task OnInitializedAsync()
         {
             CartItems = await CartService.GetCartItems();
-            foreach (var item in CartItems)
-            {
-                IncreaseTotalPrice(item.Product.Price);
-            }
+            CalculateTotalPrice();
         }
 
         private void IncreaseTotalPrice(decimal price)
         {
             TotalPrice += price;
-        }
-
-        private string GetTotalItemCostAsString(decimal price, int quantity)
-        {
-            CalculateTotalPrice();
-            return GetCurrencyFormattedString(price * quantity);
         }
 
         private void CalculateTotalPrice()
@@ -34,6 +25,7 @@ namespace gamersdomain.Client.Pages
             {
                 IncreaseTotalPrice(item.Product.Price * item.Quantity);
             }
+            StateHasChanged();
         }
 
         private static string GetCurrencyFormattedString(decimal price)
@@ -41,24 +33,12 @@ namespace gamersdomain.Client.Pages
             return string.Format("{0:C}", price);
         }
 
-        private async void RemoveItem(CartItem item)
+        private async Task RemoveItem(CartItem item)
         {
             await CartService.RemoveItemFromCart(item);
             CartItems = await CartService.GetCartItems();
+            CalculateTotalPrice();
             StateHasChanged();
-        }
-
-        private async Task UpdateLocalCart(ChangeEventArgs e)
-        {
-            Console.WriteLine(e.Value);
-            Console.WriteLine(CartItems.First().Quantity);
-            CartService.Items = CartItems;
-            await CartService.SaveLocalCart();
-        }
-
-        private void Test()
-        {
-            Console.WriteLine("WOOF!");
         }
     }
 }

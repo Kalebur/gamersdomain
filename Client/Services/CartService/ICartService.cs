@@ -10,6 +10,5 @@
         public Task RemoveItemFromCart(int productId);
         public Task<List<CartItem>> InitializeCart();
         public Task SaveLocalCart();
-        //public Task SaveLocalCart(List<CartItem> cart);
     }
 }

@@ -6,12 +6,21 @@
         <h2>@CartItem.Product.Name</h2>
         <p class="cart-item-price">Price: @string.Format("{0:#}", CalculateTotalCost())</p>
         <!-- <p class="cart-item-quantity">Quantity: @item.Quantity</p> -->
-        <label for="quantity">
+        <label for="quantity" class="cart-item-quantity">
             Quantity:
-            <input type="number" min="1" id="quantity" name="quantity" @onchange="HandleChange" value="@CartItem.Quantity" />
+            <input 
+                class="form-control"
+                type="number" 
+                min="1" 
+                id="quantity"
+                name="quantity"
+                @onchange="HandleChange"
+                value="@CartItem.Quantity"
+            />
         </label>
         <button class="btn btn-danger cart-item-btn-remove"
                 aria-label="Remove @CartItem.Product.Name From Cart"
+                @onclick="HandleRemove"
         >
             <i class="oi oi-x"></i>
         </button>

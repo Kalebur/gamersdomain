@@ -84,10 +84,5 @@
         {
             await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", Items);
         }
-
-        //public async Task SaveLocalCart(List<CartItem> cart)
-        //{
-        //    await _localStorageService.SetItemAsync<List<CartItem>>("gd-cart", cart);
-        //}
     }
 }

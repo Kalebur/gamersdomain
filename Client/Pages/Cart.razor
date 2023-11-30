@@ -37,7 +37,7 @@
                         </button>
                     </div>
                 </div> *@
-                <CartListing CartItem="item" />
+                <CartListing CartItem="item" TotalPriceHandler="@CalculateTotalPrice" HandleRemove="async () => await RemoveItem(item)" />
                 }
             </div>
             <div class="cart-totals">

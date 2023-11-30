@@ -7,10 +7,22 @@ namespace gamersdomain.Client.Shared.Components.ShoppingCart
     {
         [Parameter]
         public CartItem CartItem { get; set; } = new();
+        [Parameter]
+        public Action? TotalPriceHandler { get; set; }
+        [Parameter]
+        public EventCallback HandleRemove { get; set; }
 
         public async void HandleChange(ChangeEventArgs e)
         {
-            int newQuantity = int.Parse(e.Value!.ToString()!);
+            int newQuantity;
+            try
+            {
+                newQuantity = int.Parse(e.Value!.ToString()!);
+            }
+            catch
+            {
+                newQuantity = 1;
+            }
             if (newQuantity < 1)
             {
                 e.Value = 1;
@@ -18,10 +30,9 @@ namespace gamersdomain.Client.Shared.Components.ShoppingCart
             }
             CartItem.Quantity = newQuantity;
             CartService.Items.Where(item => item.ProductId == CartItem.ProductId).First().Quantity = CartItem.Quantity;
+            TotalPriceHandler!.Invoke();
             await CartService.SaveLocalCart();
-            await Console.Out.WriteLineAsync("WOOF!");
-            await Console.Out.WriteLineAsync($"The current WOOF! counter is: {e.Value}");
-            await Console.Out.WriteLineAsync($"The current QUANTITY is: {CartItem.Quantity}");
+            StateHasChanged();
         }
 
         private string CalculateTotalCost()

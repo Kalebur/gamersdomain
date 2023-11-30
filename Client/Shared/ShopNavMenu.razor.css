@@ -1,14 +1,16 @@
 ﻿.shop-nav {
     width: 100vw;
     background-color: rgba(151, 153, 219, 0.4);
-    padding: 1rem;
-    font-size: 1.5rem;
+    padding: 1rem 0;
+    font-size: 1.25rem;
     height: 4.5rem;
 }
 
 .shop-nav .nav {
+    width: 80%;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .shop-nav-link {
