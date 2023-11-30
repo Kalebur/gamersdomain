@@ -1,0 +1,19 @@
+﻿@inject ICartService CartService
+
+<div class="cart-item-listing">
+    <img src="@CartItem.Product.ImageUrl" alt="@CartItem.Product.Name" class="cart-item-img" />
+    <div class="cart-item-details">
+        <h2>@CartItem.Product.Name</h2>
+        <p class="cart-item-price">Price: @string.Format("{0:#}", CalculateTotalCost())</p>
+        <!-- <p class="cart-item-quantity">Quantity: @item.Quantity</p> -->
+        <label for="quantity">
+            Quantity:
+            <input type="number" min="1" id="quantity" name="quantity" @onchange="HandleChange" value="@CartItem.Quantity" />
+        </label>
+        <button class="btn btn-danger cart-item-btn-remove"
+                aria-label="Remove @CartItem.Product.Name From Cart"
+        >
+            <i class="oi oi-x"></i>
+        </button>
+    </div>
+</div>

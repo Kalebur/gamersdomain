@@ -19,7 +19,7 @@
             <div class="cart-item-listings">
             @foreach (var item in CartItems)
             {
-                <div class="cart-item-listing">
+                @* <div class="cart-item-listing">
                     <img src="@item.Product.ImageUrl" alt="@item.Product.Name" class="cart-item-img"/>
                     <div class="cart-item-details">
                         <h2>@item.Product.Name</h2>
@@ -36,7 +36,8 @@
                             <i class="oi oi-x"></i>
                         </button>
                     </div>
-                </div>
+                </div> *@
+                <CartListing CartItem="item" />
                 }
             </div>
             <div class="cart-totals">
