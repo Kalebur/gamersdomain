@@ -1,7 +1,9 @@
 # Gamers' Domain E-Commerce Site
 ---
 ![Gamers' Domain Homepage](https://cdn.discordapp.com/attachments/1090349167890669578/1179668663691903036/gd-home-page.jpg?ex=657a9f0e&is=65682a0e&hm=16ea64f72b6ed900ff3b6f94ae8e210dc26edb0bb70a74e43e6a1d91e2a2a109&)
-This project is an e-commerce application built using Blazor. It uses Entity Framework Core and SQLite to store a list of products and categories and display those to the users on the site. Users can browse a list of all products on the home page or narrow down their selection to products in a specific category by clicking one of the categories along the top of the page. Clicking into a product's page shows a bigger image of the product and lets users add the product to their shopping cart. The cart icon along the top shows the number of unique items in the cart, and clicking that icon will take you to the cart screen where you can update desired quantities or remove items from the cart entirely. Products in the shopping cart are saved to the browser's local storage to persist the data between sessions.
+This project is an e-commerce application built using Blazor. It uses Entity Framework Core and SQLite to store a list of products and categories and display those to the users on the site. Users can browse a list of all products on the home page or narrow down their selection to products in a specific category by clicking one of the categories along the top of the page. Clicking into a product's page shows a bigger image of the product and lets users add the product to their shopping cart.
+
+The cart icon along the top shows the number of unique items in the cart, and clicking that icon will take you to the cart screen where you can update desired quantities or remove items from the cart entirely. Products in the shopping cart are saved to the browser's local storage to persist the data between sessions.
 
 **There is no final checkout process currently implemented. Clicking the checkout button on the cart screen will only take you to an empty page with the 'Checkout' heading.**
 
